@@ -27,3 +27,30 @@ Types of agents:
 * simple reflex agent
 
 SEARCH
+
+
+
+## Exam Preparation notes
+
+Exam 2017:
+
+Question 2: ii
+
+Answer: Recursive Best First Search
+        -memory efficient
+        -can use heuristic
+        -can be used to get out of labyrinth
+
+
+Question 8:
+
+* a Answer: Vx Vy ( Hero(x) ˄ Name(x,Link) ˄ (x!=y) ) => Save(x,World) ˄ ⌐Save(y,World) THE LAST PART MEANS ONLY
+
+* b Answer: Vx Student(x) ˄ Works(x,Hard) => Pass(x,COMP3006)
+
+Disadvantages of Frame and Effect:
+
+    one axiom per action needed - large branching factor and memory needed
+
+
+However Successor state axioms are more memory efficient (need to clarify)
