@@ -50,7 +50,7 @@ Question 8:
 
 Disadvantages of Frame and Effect:
 
-    one axiom per action needed - large branching factor and memory needed
+* one axiom per action needed - large branching factor and memory needed
 
 
 However Successor state axioms are more memory efficient (need to clarify)
@@ -94,5 +94,32 @@ HOW TO PLAN:
 * if step fails, use dependency directed *backtracking*
 
 Components of planner:
-* Choose which rule to apply next
+* Choose which rule to apply next - planner might look at several moves in advance
+    * Generate set of differences between goal and current, identify rules to reduce differences
 * Detect when solution found (post-condition, *after each action, check if there*)
+* Detect dead-ends, take action
+* Detect "almost correct" solution
+* Apply rule to compute new state
+* Also needs to find a way to handle rules specity partial problems
+
+Successor-state axiom in 1 axiom specifies changes and non changes for different states
+
+*How to hangle "almost correct solution?*
+* Approach 1: use different approach and solve problem separately e.g. random search (?)
+* Approach 2: use least commitment - no order fixed until we need to do them
+
+
+Components of Successor state axioms:
+initial state definition
+goal state definition - should be checked after each action
+Operator definition - what happens after each action
+Basic plan
+
+[forward and backward](http://epgp.inflibnet.ac.in/epgpdata/uploads/epgp_content/S000305IT/P001484/M017184/ET/1470220705AIModule16.pdf)
+Forward Planning - searchs state-space graph from initial state looking for state that satisfies goal description
+    * the good thing about forward planning is that we know if we are getting closer to goal through heuristics
+    * In a game such as chess, there may be multiple final nodes, may not know where we are going to reach
+
+Backwards Planning - begins from goals state, tries to reach initial state 
+    * visibility of goal helps us choose moves - goal directed reasoning - preferred when branching factor in reverse direction less than forward (block world)
+    * also, moving from known to unknown is better than unknown than knon
