@@ -54,3 +54,45 @@ Disadvantages of Frame and Effect:
 
 
 However Successor state axioms are more memory efficient (need to clarify)
+
+
+Question 10:
+
+ii. a Node 5, 6
+
+Question 9:
+
+i. bagging ensemble learning - 
+* advantage is that not likely for many learners to get wrong model
+* disadvantage is that computing power
+
+Reinforcement learning
+* advantage learning can be done without a complete dataset
+        
+
+ii. unstable learning is good for ensemble - we get the average of all unstable learners to get more accurate models
+
+
+
+## planning
+
+classical planning - deterministic, observable, static.
+
+Bounded interderminacy (unpredictable effects but possible effects can be listed)
+
+* sensor-less planning - constructs sequential plans that are executed without perdeption. Must achieve goal in all circumstances
+e.g. wall of bricks, but you are blind, so you cannot see which bricks are painted. therefore just paint all bricks
+* Contingency planning - for partially observable environment and non-deterministic environments, sensing actions and describing different paths for different circumstances
+* Execution monitoring and replanning - ignores contingencies during planning, handles them as they arise. Useful when planning time is a concern, as not everything can be planned for
+    * constructs a plan involving monitoring whether plan can handle current world conditions
+* Continuous planning - plan which is continuously updated. Can handle unexpected circumstances, even if occuring in planning stage
+    * can also handle goal change!
+
+
+HOW TO PLAN:
+* Record steps to be performed, and reasons why
+* if step fails, use dependency directed *backtracking*
+
+Components of planner:
+* Choose which rule to apply next
+* Detect when solution found (post-condition, *after each action, check if there*)
