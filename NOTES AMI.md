@@ -106,7 +106,7 @@ Successor-state axiom in 1 axiom specifies changes and non changes for different
 
 *How to hangle "almost correct solution?*
 * Approach 1: use different approach and solve problem separately e.g. random search (?)
-* Approach 2: use least commitment - no order fixed until we need to do them
+* Approach 2: use least commitment - no order fixed until we need to do them 
 
 
 Components of Successor state axioms:
@@ -115,7 +115,10 @@ goal state definition - should be checked after each action
 Operator definition - what happens after each action
 Basic plan
 
+Interaction between sub-goals - important! one goal might conflict with another
+
 [forward and backward](http://epgp.inflibnet.ac.in/epgpdata/uploads/epgp_content/S000305IT/P001484/M017184/ET/1470220705AIModule16.pdf)
+
 Forward Planning - searchs state-space graph from initial state looking for state that satisfies goal description
     * the good thing about forward planning is that we know if we are getting closer to goal through heuristics
     * In a game such as chess, there may be multiple final nodes, may not know where we are going to reach
@@ -123,3 +126,33 @@ Forward Planning - searchs state-space graph from initial state looking for stat
 Backwards Planning - begins from goals state, tries to reach initial state 
     * visibility of goal helps us choose moves - goal directed reasoning - preferred when branching factor in reverse direction less than forward (block world)
     * also, moving from known to unknown is better than unknown than knon
+
+Partial order planners - plan which specifies all actions needed to be taken, only specifies and reorders between actions when necesssary
+    * used in blocks world, or a shopping list in real life
+    * Partial order plan has:
+        * set of actions/operators
+        * partial order for actions, specifies conditions about order of some actions
+        * casual links - which actions meet which preconditions of other actions
+        * open preconditions - specifies preconditions not fulfilled by any action in partial-order plan
+    * The less partial order/casual links, the more variety of actions there are
+
+    * Threat in partial ordering is orderings that threaten to break connected actions: to resolve:
+        * Promotion - orders a step to have to precede another step
+        * demotion/de-blobbering - orders a step before to "clobber" another step's preconditions
+
+## LOGIC
+
+The problem between frame and effect axioms is the FRAME problem - challenge of expressing the effects of actions without explicitly stating non-changes
+    * Representation - avoid frame axioms
+    * inference - avoid "copy-overs" to keep track of state
+
+This is where we can combine them into successor state axioms!
+    * each axiom is about predicate rather than action
+
+## Machine Learning
+
+2 categories of learning algorithms
+
+* non incremental
+
+* incremental
