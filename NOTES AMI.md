@@ -136,34 +136,34 @@ Interaction between sub-goals - important! one goal might conflict with another
 [forward and backward](http://epgp.inflibnet.ac.in/epgpdata/uploads/epgp_content/S000305IT/P001484/M017184/ET/1470220705AIModule16.pdf)
 
 Forward Planning - searchs state-space graph from initial state looking for state that satisfies goal description
-    * the good thing about forward planning is that we know if we are getting closer to goal through heuristics
-    * In a game such as chess, there may be multiple final nodes, may not know where we are going to reach
+* the good thing about forward planning is that we know if we are getting closer to goal through heuristics
+* In a game such as chess, there may be multiple final nodes, may not know where we are going to reach
 
 Backwards Planning - begins from goals state, tries to reach initial state 
-    * visibility of goal helps us choose moves - goal directed reasoning - preferred when branching factor in reverse direction less than forward (block world)
-    * also, moving from known to unknown is better than unknown than knon
+* visibility of goal helps us choose moves - goal directed reasoning - preferred when branching factor in reverse direction less than forward (block world)
+* also, moving from known to unknown is better than unknown than knon
 
 Partial order planners - plan which specifies all actions needed to be taken, only specifies and reorders between actions when necesssary
-    * used in blocks world, or a shopping list in real life
-    * Partial order plan has:
-        * set of actions/operators
-        * partial order for actions, specifies conditions about order of some actions
-        * casual links - which actions meet which preconditions of other actions
-        * open preconditions - specifies preconditions not fulfilled by any action in partial-order plan
-    * The less partial order/casual links, the more variety of actions there are
+* used in blocks world, or a shopping list in real life
+* Partial order plan has:
+    * set of actions/operators
+    * partial order for actions, specifies conditions about order of some actions
+    * casual links - which actions meet which preconditions of other actions
+    * open preconditions - specifies preconditions not fulfilled by any action in partial-order plan
+* The less partial order/casual links, the more variety of actions there are
 
-    * Threat in partial ordering is orderings that threaten to break connected actions: to resolve:
-        * Promotion - orders a step to have to precede another step
-        * demotion/de-blobbering - orders a step before to "clobber" another step's preconditions
+* Threat in partial ordering is orderings that threaten to break connected actions: to resolve:
+    * Promotion - orders a step to have to precede another step
+    * demotion/de-blobbering - orders a step before to "clobber" another step's preconditions
 
 ## LOGIC
 
 The problem between frame and effect axioms is the FRAME problem - challenge of expressing the effects of actions without explicitly stating non-changes
-    * Representation - avoid frame axioms
-    * inference - avoid "copy-overs" to keep track of state
+* Representation - avoid frame axioms
+* inference - avoid "copy-overs" to keep track of state
 
 This is where we can combine them into successor state axioms!
-    * each axiom is about predicate rather than action
+* each axiom is about predicate rather than action
 
 ## Machine Learning
 
@@ -183,25 +183,25 @@ Non incremental learning is not realistic in real world, data is always added an
 * incremental 
 
 The general procedure is:
-    * input some training data
-    * generate concept representation based on data observed
-    * uses concept representation to classify new daya
-    * update concept representation to be consistent with data observed - continuously updated
-        * advantages - effective in real world
-        * disadvantages - difficult to implement
+* input some training data
+* generate concept representation based on data observed
+* uses concept representation to classify new daya
+* update concept representation to be consistent with data observed - continuously updated
+    * advantages - effective in real world
+    * disadvantages - difficult to implement
 
 Problems in incremental learning include:
-    * bias
-        * the way data needs to be arranged has to make it easy for the learner to derive a definition of classes
-        *things which introduce bias can be:
-            * poor quality of training data
-            * model performance mismatch - when training data does not match data it will be tested on
-    * how to store data/representations
-        * full memory - retain all examples observed - *NOT* realistic
-        * partial memory - selective of what it is you will store
-        * have summary statistics to help with classification more effectively (?)
-            * used by lots of learners to make a decision on larger sample
-    * update rate of data/conditions
-        * sometimes it is a bad choice tho, if data is full of noise, continuously updating will introduce variance
+* bias
+    * the way data needs to be arranged has to make it easy for the learner to derive a definition of classes
+    * things which introduce bias can be:
+        * poor quality of training data
+        * model performance mismatch - when training data does not match data it will be tested on
+* how to store data/representations
+    * full memory - retain all examples observed - *NOT* realistic
+    * partial memory - selective of what it is you will store
+    * have summary statistics to help with classification more effectively (?)
+        * used by lots of learners to make a decision on larger sample
+* update rate of data/conditions
+    * sometimes it is a bad choice tho, if data is full of noise, continuously updating will introduce variance
 
 
