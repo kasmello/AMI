@@ -20,13 +20,29 @@ Describing the problem of the environment:
 * Static/Dynamic - if environment can change itself while agent is deliberating
 * discrete/continuous - discrete has finite set of possibilities (e.g. chess)
 
+
 Types of agents:
 * Utility based agent
 * goal based agent
 * model-based agent - takes in how the world evolves to adapt actions of AI
-* simple reflex agent
+    * fixes many of the problems in simple reflex agents
+* simple reflex agent - takes in the current world state through sensors and decides action based on condition-action mapping
+    * only suitable for fully observable world, as it does not consider percept history
+        * e.g. when determining whether the front car is breaking or not is based on a single frame of video
+    * however the world has to be simple, as we cannot condition-action map everything
+    * infinite loops are unavoidable
+        * to solve this, when not know what to do, just act random xD
+    * also if you don't have a lot of computing power
+  
 
-SEARCH
+*RATIONALITY* DEPENDS ON:
+* Performance measure
+* agent's prior knowledge of env
+* actions agent can perform
+* agent's percept sequence to date
+    
+
+## SEARCH
 
 
 
@@ -151,8 +167,41 @@ This is where we can combine them into successor state axioms!
 
 ## Machine Learning
 
-2 categories of learning algorithms
+2 categories of learning algorithms *NOTE that both will be impacted by noise*
 
-* non incremental
+Conceptual learning - if not clean of noise, generalisations will be off.
 
-* incremental
+* non incremental (one step learning) 
+    * labelled data
+    * generate classification structure (hierarchal)
+    * uses classification structure to determine class of new unlabelled instance
+        * advantage - simple, generates good and efficient classification structures
+        * disadvantages - limited applications, need all data at the start of training, and hard to update
+
+Non incremental learning is not realistic in real world, data is always added and updated
+
+* incremental 
+
+The general procedure is:
+    * input some training data
+    * generate concept representation based on data observed
+    * uses concept representation to classify new daya
+    * update concept representation to be consistent with data observed - continuously updated
+        * advantages - effective in real world
+        * disadvantages - difficult to implement
+
+Problems in incremental learning include:
+    * bias
+        * the way data needs to be arranged has to make it easy for the learner to derive a definition of classes
+        *things which introduce bias can be:
+            * poor quality of training data
+            * model performance mismatch - when training data does not match data it will be tested on
+    * how to store data/representations
+        * full memory - retain all examples observed - *NOT* realistic
+        * partial memory - selective of what it is you will store
+        * have summary statistics to help with classification more effectively (?)
+            * used by lots of learners to make a decision on larger sample
+    * update rate of data/conditions
+        * sometimes it is a bad choice tho, if data is full of noise, continuously updating will introduce variance
+
+
