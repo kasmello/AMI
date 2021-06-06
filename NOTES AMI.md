@@ -44,6 +44,64 @@ Types of agents:
 
 ## SEARCH
 
+### Uninformed
+
+* Breadth-first search
+    * goal test done when node is generated
+    * use when you want to find shortest path from certain source node, and branching factor isnt that big
+    * Uses FIFO Queue
+    * stops at goal
+
+* uniform-cost
+    * uses priority queue
+    * The ONLY optimal uninformed search without other terms
+    * bad thing about this is space complexity and time complexity much worse than breadth - only use if you only care abt optimality
+    * goal test applied to node when it is selected for expansion rather when generated like BFS
+    * Takes a lot of space and time as it can explore large trees through small steps before exploring paths with large, useful steps
+    * does *NOT* stop at goal
+
+* depth-first search
+    * LIFO queue
+    * do NOT use on infinitely deep trees!
+    * use when not a lot of space is available
+    * stops at goal
+
+* depth-limited search
+
+* Iterative deepening depth first search
+
+* Bidirectional search - by default uses breadth first search simultaneously from start and end vertex
+    * 2 simult-aneous searches - one forward from initial state and other backwards from goal
+    * Space complexity can be reduced by roughly half if one of the 2 searches is done by iterative deepening
+    * if want to be optimal, additional search after first solution found is required
+    * check for solution is done after each node is generated or selected (done with hash table)
+    * Advantages
+        * Speed of results
+        * reduces time taken
+        * saves resources
+    * Disadvantages
+        * more complex to implement
+        * only optimal if node cost is the same
+        * Need to be aware of goal state is first, as well as states leading up to it
+            * in some instances, cannot work backwards
+
+    * branch and bound
+
+
+### Informed searches
+
+* Greedy best-first search - expands node closest to goal
+    * priority queue
+    * complexity of space and time = `b^m`
+    * susceptible to loops - not complete
+
+* a star
+
+[RBFS and SMA *](http://mas.cs.umass.edu/classes/cs683/lectures-2010/Lec6_Search5-F2010-4up.pdf)
+
+* RBFS
+
+* SMA star
 
 
 ## Exam Preparation notes
