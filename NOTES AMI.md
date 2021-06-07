@@ -49,6 +49,7 @@ Types of agents:
 * Breadth-first search
     * goal test done when node is generated
     * use when you want to find shortest path from certain source node, and branching factor isnt that big
+    * does not visit same state multiple times
     * Uses FIFO Queue
     * stops at goal
 
@@ -67,8 +68,15 @@ Types of agents:
     * stops at goal
 
 * depth-limited search
+   * nodes after l depth are treated as if they have no more children
+   * prevents infinite loops
+   * useful if depth of goal is known, or diameter if state space is known
 
 * Iterative deepening depth first search
+   * starts at depth of 1, increases every iteration  
+   * gets the completeness of BDS, gets linear space complexity of DFS (bd)
+   * does not take the same space as BFS, as it is basically separate depth first searches being run one after another, throwing away the memory after each iteration
+   * may seem wasted as states are generated multiple times, but most branches are at bottom level, where they will only be generated once
 
 * Bidirectional search - by default uses breadth first search simultaneously from start and end vertex
     * 2 simult-aneous searches - one forward from initial state and other backwards from goal
@@ -85,7 +93,7 @@ Types of agents:
         * Need to be aware of goal state is first, as well as states leading up to it
             * in some instances, cannot work backwards
 
-    * branch and bound
+  
 
 
 ### Informed searches
@@ -100,6 +108,9 @@ Types of agents:
 [RBFS and SMA *](http://mas.cs.umass.edu/classes/cs683/lectures-2010/Lec6_Search5-F2010-4up.pdf)
 
 * RBFS
+   * Done in linear space
+   * but suffers from node regeneration overhead
+
 
 * SMA star
 
@@ -221,7 +232,8 @@ The problem between frame and effect axioms is the FRAME problem - challenge of 
 * inference - avoid "copy-overs" to keep track of state
 
 This is where we can combine them into successor state axioms!
-* each axiom is about predicate rather than action
+* each axiom on left is about predicate rather than action
+* Disadvantages ???
 
 ## Machine Learning
 
